@@ -2,138 +2,283 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8" />
-<title>World Cup 2026 Live Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>FIFA World Cup 2026™ Boston Live</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  background: #0a0f1c;
-  color: white;
-  font-family: Arial, Helvetica, sans-serif; }
 
-/* TOP BAR */
-header {
-  background: linear-gradient(90deg, #0b1b3a, #0e2a5a);
-  padding: 18px 30px;
-  font-size: 22px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  display: flex;
-  justify-content: space-between;
+:root{
+  --bg:#07111f;
+  --card:#0f1c2f;
+  --card2:#142742;
+  --cyan:#4de3ff;
+  --blue:#2d7dff;
+  --gold:#ffd166;
+  --white:#ffffff;
+  --soft:#8fa7c7;
+  --live:#00ff88;
 }
 
-.live {
-  color: #ff3b3b;
-  font-weight: bold;
-  animation: blink 1.2s infinite;
+*{
+  box-sizing:border-box;
 }
 
-@keyframes blink {
-  50% { opacity: 0.4; }
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:
+  radial-gradient(circle at top left,#17375f 0%,#07111f 40%),
+  radial-gradient(circle at bottom right,#10223f 0%,#07111f 50%);
+  color:white;
+  overflow:hidden;
 }
 
-/* LAYOUT */
-.container {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 20px;
-  padding: 20px;
+/* HEADER */
+
+header{
+  height:90px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 40px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  background:rgba(0,0,0,0.18);
+  backdrop-filter: blur(10px);
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.logo-circle{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--cyan),var(--blue));
+  box-shadow:0 0 25px rgba(77,227,255,0.5); }
+
+.title{
+  font-size:26px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.subtitle{
+  color:var(--soft);
+  font-size:13px;
+}
+
+.live{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+  color:var(--live);
+}
+
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--live);
+  animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+  50%{
+    opacity:.4;
+    transform:scale(1.5);
+  }
+}
+
+/* MAIN */
+
+.container{
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:24px;
+  padding:24px;
+  height:calc(100vh - 90px);
 }
 
 /* CARDS */
-.card {
-  background: #111a2e;
-  border-radius: 14px;
-  padding: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
 
-h2 {
-  margin: 0 0 12px 0;
-  font-size: 18px;
-  color: #7db3ff;
+.card{
+  background:linear-gradient(180deg,var(--card),var(--card2));
+  border-radius:24px;
+  padding:24px;
+  border:1px solid rgba(255,255,255,0.05);
+  box-shadow:
+  0 10px 40px rgba(0,0,0,.35),
+  inset 0 1px 0 rgba(255,255,255,0.03);
+  overflow:auto;
 }
 
-/* MATCHS */
-.match {
-  background: #0e1730;
-  padding: 12px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.card h2{
+  margin-top:0;
+  margin-bottom:20px;
+  font-size:20px;
+  color:var(--cyan);
 }
 
-.team {
-  font-weight: bold;
+/* MATCHES */
+
+.match{
+  background:rgba(255,255,255,0.03);
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:16px;
+  border:1px solid rgba(255,255,255,0.05); }
+
+.match-top{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:15px;
 }
 
-.score {
-  font-size: 20px;
-  color: #00ff9d;
-  font-weight: bold;
+.status{
+  color:var(--gold);
+  font-size:13px;
+  font-weight:700;
 }
 
-/* GROUP TABLE */
-.group {
-  margin-bottom: 18px;
+.time{
+  color:var(--soft);
+  font-size:13px;
 }
 
-.row {
-  display: flex;
-  justify-content: space-between;
-  padding: 6px 0;
-  border-bottom: 1px solid #1c2a4a;
+.teams{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
-.points {
-  color: #ffd166;
+.team{
+  font-size:20px;
+  font-weight:700;
 }
 
-/* FOOTER INFO */
-footer {
-  text-align: center;
-  padding: 10px;
-  font-size: 12px;
-  color: #6b7aa8;
+.score{
+  font-size:34px;
+  font-weight:900;
+  color:var(--live);
+  min-width:100px;
+  text-align:center;
 }
+
+/* STANDINGS */
+
+.group{
+  margin-bottom:30px;
+}
+
+.group-title{
+  font-size:18px;
+  margin-bottom:12px;
+  color:var(--gold);
+}
+
+.table-row{
+  display:grid;
+  grid-template-columns:40px 1fr 60px;
+  padding:10px 14px;
+  margin-bottom:6px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.03);
+  align-items:center;
+}
+
+.rank{
+  color:var(--soft);
+}
+
+.points{
+  text-align:right;
+  color:var(--cyan);
+  font-weight:700;
+}
+
+/* FOOTER */
+
+footer{
+  position:absolute;
+  bottom:10px;
+  width:100%;
+  text-align:center;
+  color:#6c87ab;
+  font-size:12px;
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <div>⚽ WORLD CUP 2026 - LIVE DASHBOARD</div>
-  <div class="live">● LIVE</div>
+
+  <div class="logo">
+    <div class="logo-circle"></div>
+
+    <div>
+      <div class="title">FIFA WORLD CUP 2026™</div>
+      <div class="subtitle">BOSTON HOST CITY LIVE EXPERIENCE</div>
+    </div>
+  </div>
+
+  <div class="live">
+    <div class="dot"></div>
+    LIVE
+  </div>
+
 </header>
 
 <div class="container">
 
   <!-- MATCHES -->
+
   <div class="card">
-    <h2>🔥 Matchs en direct</h2>
-    <div id="matches">Chargement...</div>
+
+    <h2>LIVE MATCHES</h2>
+
+    <div id="matches">
+
+      <!-- MATCH -->
+
+    </div>
+
   </div>
 
   <!-- STANDINGS -->
+
   <div class="card">
-    <h2>📊 Classements</h2>
-    <div id="standings">Chargement...</div>
+
+    <h2>GROUP STANDINGS</h2>
+
+    <div id="standings"></div>
+
   </div>
 
 </div>
 
 <footer>
-  Auto-refresh toutes les 10 secondes • Dashboard ESPN Style </footer>
+Official Inspired FIFA World Cup 2026™ Boston Style Dashboard </footer>
 
 <script>
 
-/* 🔧 CONNECTE TON API ICI */
-const API_BASE = "https://wc2026api.com/api"; // à remplacer const API_KEY = "wc26_8QSCAceSkc7V8zifCDG4Bw";
+const API_BASE = "https://eu01.z.antigena.com/l/vU-9LblmV3j156h1QGnJlTGtVrHfjYecmH5KXk9HrXTIztSXmG1WEknGREg3fsGaShhm8vG4--eVxLObDYDm7VZoYqAfTE7wJOU5ROFTke6fCTfewyo7Z26QsKFnrjXYwAmfC8ripFdNndrq2bnsW5fme73m9pRXX5sWzJaQ9PX0OsAiLT0ScaOWLm";
+const API_KEY = "";
 
-/* MATCHS */
-async function loadMatches() {
-  try {
+/* MATCHES */
+
+async function loadMatches(){
+
+  try{
+
     const res = await fetch(`${API_BASE}/matches/today?key=${API_KEY}`);
     const data = await res.json();
 
@@ -141,30 +286,53 @@ async function loadMatches() {
     el.innerHTML = "";
 
     data.matches.forEach(m => {
+
       el.innerHTML += `
-        <div class="match">
-          <div>
-            <div class="team">${m.home_team}</div>
-            <div class="team">${m.away_team}</div>
+
+      <div class="match">
+
+        <div class="match-top">
+          <div class="status">${m.status}</div>
+          <div class="time">${m.time || ""}</div>
+        </div>
+
+        <div class="teams">
+
+          <div class="team">
+            ${m.home_team}
           </div>
 
           <div class="score">
             ${m.home_score ?? 0} - ${m.away_score ?? 0}
           </div>
+
+          <div class="team">
+            ${m.away_team}
+          </div>
+
         </div>
+
+      </div>
+
       `;
+
     });
 
-  } catch (e) {
+  }catch(e){
+
     document.getElementById("matches").innerHTML =
-      "Erreur chargement matchs";
+    "Unable to load live matches.";
+
   }
+
 }
 
+/* STANDINGS */
 
-/* CLASSEMENTS */
-async function loadStandings() {
-  try {
+async function loadStandings(){
+
+  try{
+
     const res = await fetch(`${API_BASE}/standings?key=${API_KEY}`);
     const data = await res.json();
 
@@ -173,37 +341,65 @@ async function loadStandings() {
 
     data.groups.forEach(g => {
 
-      let html = `<div class="group">
-        <h3>Groupe ${g.name}</h3>`;
+      let html = `
+      <div class="group">
 
-      g.teams.forEach(t => {
+      <div class="group-title">
+      GROUP ${g.name}
+      </div>
+      `;
+
+      g.teams.forEach((t,index)=>{
+
         html += `
-          <div class="row">
-            <div>${t.name}</div>
-            <div class="points">${t.points} pts</div>
+
+        <div class="table-row">
+
+          <div class="rank">
+            ${index+1}
           </div>
+
+          <div>
+            ${t.name}
+          </div>
+
+          <div class="points">
+            ${t.points} pts
+          </div>
+
+        </div>
+
         `;
+
       });
 
       html += `</div>`;
+
       el.innerHTML += html;
+
     });
 
-  } catch (e) {
+  }catch(e){
+
     document.getElementById("standings").innerHTML =
-      "Erreur chargement classements";
+    "Unable to load standings.";
+
   }
+
 }
 
+/* REFRESH */
 
-/* AUTO REFRESH */
-async function refresh() {
+async function refresh(){
+
   await loadMatches();
   await loadStandings();
+
 }
 
 refresh();
-setInterval(refresh, 10000);
+
+setInterval(refresh,10000);
 
 </script>
 
