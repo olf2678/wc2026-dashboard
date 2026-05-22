@@ -1,25 +1,31 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8" />
+
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>FIFA World Cup 2026™ Boston Live</title>
+<title>Boston FIFA World Cup 2026™ Live</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
-  --bg:#07111f;
-  --card:#0f1c2f;
-  --card2:#142742;
-  --cyan:#4de3ff;
-  --blue:#2d7dff;
+  --bg:#071321;
+  --bg2:#0d2037;
+  --card:#102540;
+  --line:rgba(255,255,255,0.06);
+
+  --cyan:#48d8ff;
+  --blue:#2d6cff;
+  --green:#9cff57;
   --gold:#ffd166;
   --white:#ffffff;
-  --soft:#8fa7c7;
-  --live:#00ff88;
+  --soft:#9fb5d1;
+
+  --live:#6eff7e;
 }
 
 *{
@@ -27,235 +33,400 @@
 }
 
 body{
+
   margin:0;
-  font-family:'Inter',sans-serif;
-  background:
-  radial-gradient(circle at top left,#17375f 0%,#07111f 40%),
-  radial-gradient(circle at bottom right,#10223f 0%,#07111f 50%);
-  color:white;
   overflow:hidden;
+
+  font-family:'Inter',sans-serif;
+  color:white;
+
+  background:
+  radial-gradient(circle at top left,#17385f 0%,#071321 45%),
+  radial-gradient(circle at bottom right,#123459 0%,#071321 50%);
+
 }
 
-/* HEADER */
+/* TOP BAR */
 
 header{
+
   height:90px;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 40px;
-  border-bottom:1px solid rgba(255,255,255,0.08);
-  background:rgba(0,0,0,0.18);
-  backdrop-filter: blur(10px);
+
+  padding:0 36px;
+
+  border-bottom:1px solid var(--line);
+
+  background:rgba(0,0,0,.16);
+  backdrop-filter:blur(12px);
+
 }
 
-.logo{
+.branding{
+
   display:flex;
   align-items:center;
-  gap:16px;
+  gap:18px;
+
 }
 
-.logo-circle{
-  width:48px;
-  height:48px;
+.brand-icon{
+
+  width:52px;
+  height:52px;
+
   border-radius:50%;
-  background:linear-gradient(135deg,var(--cyan),var(--blue));
-  box-shadow:0 0 25px rgba(77,227,255,0.5); }
+
+  background:
+  linear-gradient(
+  135deg,
+  var(--cyan),
+  var(--green),
+  var(--blue)
+  );
+
+  box-shadow:
+  0 0 30px rgba(72,216,255,.4);
+
+}
 
 .title{
+
   font-size:26px;
   font-weight:900;
   letter-spacing:1px;
+
 }
 
 .subtitle{
+
   color:var(--soft);
-  font-size:13px;
+  font-size:12px;
+  margin-top:4px;
+
 }
 
 .live{
+
   display:flex;
   align-items:center;
   gap:10px;
-  font-weight:700;
+
   color:var(--live);
+  font-weight:800;
+
 }
 
 .dot{
-  width:10px;
-  height:10px;
+
+  width:11px;
+  height:11px;
+
   border-radius:50%;
   background:var(--live);
+
   animation:pulse 1s infinite;
+
 }
 
 @keyframes pulse{
+
   50%{
     opacity:.4;
     transform:scale(1.5);
   }
+
 }
 
 /* MAIN */
 
 .container{
+
   display:grid;
-  grid-template-columns:1.3fr 1fr;
+  grid-template-columns:1.4fr 1fr;
   gap:24px;
+
   padding:24px;
+
   height:calc(100vh - 90px);
+
 }
 
-/* CARDS */
+/* PANELS */
 
-.card{
-  background:linear-gradient(180deg,var(--card),var(--card2));
-  border-radius:24px;
+.panel{
+
+  background:
+  linear-gradient(
+  180deg,
+  rgba(16,37,64,.95),
+  rgba(10,22,38,.95)
+  );
+
+  border-radius:28px;
+
   padding:24px;
-  border:1px solid rgba(255,255,255,0.05);
+
+  border:1px solid var(--line);
+
   box-shadow:
-  0 10px 40px rgba(0,0,0,.35),
-  inset 0 1px 0 rgba(255,255,255,0.03);
+  0 15px 40px rgba(0,0,0,.4),
+  inset 0 1px 0 rgba(255,255,255,.03);
+
   overflow:auto;
+
 }
 
-.card h2{
+/* TITLES */
+
+.panel h2{
+
   margin-top:0;
-  margin-bottom:20px;
-  font-size:20px;
+  margin-bottom:24px;
+
   color:var(--cyan);
+
+  font-size:20px;
+  letter-spacing:.5px;
+
 }
 
-/* MATCHES */
+/* MATCH CARD */
 
 .match{
-  background:rgba(255,255,255,0.03);
-  border-radius:18px;
-  padding:18px;
+
+  position:relative;
+
+  padding:20px;
+
   margin-bottom:16px;
-  border:1px solid rgba(255,255,255,0.05); }
+
+  border-radius:22px;
+
+  background:
+  linear-gradient(
+  180deg,
+  rgba(255,255,255,.04),
+  rgba(255,255,255,.02)
+  );
+
+  border:1px solid rgba(255,255,255,.05);
+
+  overflow:hidden;
+
+}
+
+.match::before{
+
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:0;
+  bottom:0;
+
+  width:5px;
+
+  background:
+  linear-gradient(
+  var(--cyan),
+  var(--green)
+  );
+
+}
+
+/* MATCH TOP */
 
 .match-top{
+
   display:flex;
   justify-content:space-between;
-  margin-bottom:15px;
+
+  margin-bottom:16px;
+
 }
 
 .status{
+
   color:var(--gold);
-  font-size:13px;
+  font-size:12px;
   font-weight:700;
+  letter-spacing:1px;
+
 }
 
 .time{
+
   color:var(--soft);
-  font-size:13px;
+  font-size:12px;
+
 }
 
+/* TEAMS */
+
 .teams{
+
   display:flex;
   align-items:center;
   justify-content:space-between;
+
 }
 
 .team{
-  font-size:20px;
+
+  width:35%;
+
+  font-size:22px;
   font-weight:700;
+
+}
+
+.team:last-child{
+
+  text-align:right;
+
 }
 
 .score{
-  font-size:34px;
-  font-weight:900;
-  color:var(--live);
-  min-width:100px;
+
+  width:30%;
+
   text-align:center;
+
+  font-size:40px;
+  font-weight:900;
+
+  color:var(--live);
+
 }
 
-/* STANDINGS */
+/* GROUPS */
 
 .group{
-  margin-bottom:30px;
+
+  margin-bottom:32px;
+
 }
 
-.group-title{
-  font-size:18px;
-  margin-bottom:12px;
+.group-name{
+
+  margin-bottom:14px;
+
   color:var(--gold);
+
+  font-size:18px;
+  font-weight:800;
+
+  letter-spacing:1px;
+
 }
 
-.table-row{
+.team-row{
+
   display:grid;
-  grid-template-columns:40px 1fr 60px;
-  padding:10px 14px;
-  margin-bottom:6px;
-  border-radius:12px;
-  background:rgba(255,255,255,0.03);
+  grid-template-columns:50px 1fr 80px;
+
   align-items:center;
+
+  padding:12px 14px;
+
+  margin-bottom:8px;
+
+  border-radius:14px;
+
+  background:rgba(255,255,255,.03);
+
+  border:1px solid rgba(255,255,255,.03);
+
 }
 
 .rank{
+
   color:var(--soft);
+
 }
 
 .points{
+
   text-align:right;
+
   color:var(--cyan);
-  font-weight:700;
+  font-weight:800;
+
 }
 
 /* FOOTER */
 
 footer{
+
   position:absolute;
   bottom:10px;
   width:100%;
+
   text-align:center;
-  color:#6c87ab;
-  font-size:12px;
+
+  color:#7f97b5;
+  font-size:11px;
+
+  letter-spacing:.5px;
+
 }
 
 </style>
+
 </head>
 
 <body>
 
 <header>
 
-  <div class="logo">
-    <div class="logo-circle"></div>
+  <div class="branding">
+
+    <div class="brand-icon"></div>
 
     <div>
-      <div class="title">FIFA WORLD CUP 2026™</div>
-      <div class="subtitle">BOSTON HOST CITY LIVE EXPERIENCE</div>
+
+      <div class="title">
+        FIFA WORLD CUP 2026™
+      </div>
+
+      <div class="subtitle">
+        WE ARE BOSTON • LIVE MATCH CENTER
+      </div>
+
     </div>
+
   </div>
 
   <div class="live">
+
     <div class="dot"></div>
+
     LIVE
+
   </div>
 
 </header>
 
 <div class="container">
 
-  <!-- MATCHES -->
+  <!-- LIVE MATCHES -->
 
-  <div class="card">
+  <div class="panel">
 
     <h2>LIVE MATCHES</h2>
 
-    <div id="matches">
-
-      <!-- MATCH -->
-
-    </div>
+    <div id="matches"></div>
 
   </div>
 
   <!-- STANDINGS -->
 
-  <div class="card">
+  <div class="panel">
 
     <h2>GROUP STANDINGS</h2>
 
@@ -266,11 +437,12 @@ footer{
 </div>
 
 <footer>
-Official Inspired FIFA World Cup 2026™ Boston Style Dashboard </footer>
+Inspired by the official Boston FIFA World Cup 2026™ Host City branding
+</footer>
 
 <script>
 
-const API_BASE = "https://eu01.z.antigena.com/l/vU-9LblmV3j156h1QGnJlTGtVrHfjYecmH5KXk9HrXTIztSXmG1WEknGREg3fsGaShhm8vG4--eVxLObDYDm7VZoYqAfTE7wJOU5ROFTke6fCTfewyo7Z26QsKFnrjXYwAmfC8ripFdNndrq2bnsW5fme73m9pRXX5sWzJaQ9PX0OsAiLT0ScaOWLm";
+const API_BASE = "https://wc2026api.com/api";
 const API_KEY = "";
 
 /* MATCHES */
@@ -279,21 +451,32 @@ async function loadMatches(){
 
   try{
 
-    const res = await fetch(`${API_BASE}/matches/today?key=${API_KEY}`);
+    const res = await fetch(
+      `${API_BASE}/matches/today?key=${API_KEY}`
+    );
+
     const data = await res.json();
 
     const el = document.getElementById("matches");
+
     el.innerHTML = "";
 
-    data.matches.forEach(m => {
+    data.matches.forEach(m=>{
 
       el.innerHTML += `
 
       <div class="match">
 
         <div class="match-top">
-          <div class="status">${m.status}</div>
-          <div class="time">${m.time || ""}</div>
+
+          <div class="status">
+            ${m.status}
+          </div>
+
+          <div class="time">
+            ${m.time || ""}
+          </div>
+
         </div>
 
         <div class="teams">
@@ -303,7 +486,9 @@ async function loadMatches(){
           </div>
 
           <div class="score">
-            ${m.home_score ?? 0} - ${m.away_score ?? 0}
+            ${m.home_score ?? 0}
+            -
+            ${m.away_score ?? 0}
           </div>
 
           <div class="team">
@@ -333,27 +518,33 @@ async function loadStandings(){
 
   try{
 
-    const res = await fetch(`${API_BASE}/standings?key=${API_KEY}`);
+    const res = await fetch(
+      `${API_BASE}/standings?key=${API_KEY}`
+    );
+
     const data = await res.json();
 
     const el = document.getElementById("standings");
+
     el.innerHTML = "";
 
-    data.groups.forEach(g => {
+    data.groups.forEach(g=>{
 
       let html = `
+
       <div class="group">
 
-      <div class="group-title">
-      GROUP ${g.name}
+      <div class="group-name">
+        GROUP ${g.name}
       </div>
+
       `;
 
       g.teams.forEach((t,index)=>{
 
         html += `
 
-        <div class="table-row">
+        <div class="team-row">
 
           <div class="rank">
             ${index+1}
@@ -364,7 +555,7 @@ async function loadStandings(){
           </div>
 
           <div class="points">
-            ${t.points} pts
+            ${t.points} PTS
           </div>
 
         </div>
