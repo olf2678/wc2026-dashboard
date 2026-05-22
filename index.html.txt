@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<title>World Cup 2026 Live Dashboard</title>
+
+<style>
+body {
+  margin: 0;
+  background: #0a0f1c;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif; }
+
+/* TOP BAR */
+header {
+  background: linear-gradient(90deg, #0b1b3a, #0e2a5a);
+  padding: 18px 30px;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.live {
+  color: #ff3b3b;
+  font-weight: bold;
+  animation: blink 1.2s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.4; }
+}
+
+/* LAYOUT */
+.container {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* CARDS */
+.card {
+  background: #111a2e;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+
+h2 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  color: #7db3ff;
+}
+
+/* MATCHS */
+.match {
+  background: #0e1730;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.team {
+  font-weight: bold;
+}
+
+.score {
+  font-size: 20px;
+  color: #00ff9d;
+  font-weight: bold;
+}
+
+/* GROUP TABLE */
+.group {
+  margin-bottom: 18px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #1c2a4a;
+}
+
+.points {
+  color: #ffd166;
+}
+
+/* FOOTER INFO */
+footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 12px;
+  color: #6b7aa8;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div>⚽ WORLD CUP 2026 - LIVE DASHBOARD</div>
+  <div class="live">● LIVE</div>
+</header>
+
+<div class="container">
+
+  <!-- MATCHES -->
+  <div class="card">
+    <h2>🔥 Matchs en direct</h2>
+    <div id="matches">Chargement...</div>
+  </div>
+
+  <!-- STANDINGS -->
+  <div class="card">
+    <h2>📊 Classements</h2>
+    <div id="standings">Chargement...</div>
+  </div>
+
+</div>
+
+<footer>
+  Auto-refresh toutes les 10 secondes • Dashboard ESPN Style </footer>
+
+<script>
+
+/* 🔧 CONNECTE TON API ICI */
+const API_BASE = "https://wc2026api.com/api"; // à remplacer const API_KEY = "wc26_8QSCAceSkc7V8zifCDG4Bw";
+
+/* MATCHS */
+async function loadMatches() {
+  try {
+    const res = await fetch(`${API_BASE}/matches/today?key=${API_KEY}`);
+    const data = await res.json();
+
+    const el = document.getElementById("matches");
+    el.innerHTML = "";
+
+    data.matches.forEach(m => {
+      el.innerHTML += `
+        <div class="match">
+          <div>
+            <div class="team">${m.home_team}</div>
+            <div class="team">${m.away_team}</div>
+          </div>
+
+          <div class="score">
+            ${m.home_score ?? 0} - ${m.away_score ?? 0}
+          </div>
+        </div>
+      `;
+    });
+
+  } catch (e) {
+    document.getElementById("matches").innerHTML =
+      "Erreur chargement matchs";
+  }
+}
+
+
+/* CLASSEMENTS */
+async function loadStandings() {
+  try {
+    const res = await fetch(`${API_BASE}/standings?key=${API_KEY}`);
+    const data = await res.json();
+
+    const el = document.getElementById("standings");
+    el.innerHTML = "";
+
+    data.groups.forEach(g => {
+
+      let html = `<div class="group">
+        <h3>Groupe ${g.name}</h3>`;
+
+      g.teams.forEach(t => {
+        html += `
+          <div class="row">
+            <div>${t.name}</div>
+            <div class="points">${t.points} pts</div>
+          </div>
+        `;
+      });
+
+      html += `</div>`;
+      el.innerHTML += html;
+    });
+
+  } catch (e) {
+    document.getElementById("standings").innerHTML =
+      "Erreur chargement classements";
+  }
+}
+
+
+/* AUTO REFRESH */
+async function refresh() {
+  await loadMatches();
+  await loadStandings();
+}
+
+refresh();
+setInterval(refresh, 10000);
+
+</script>
+
+</body>
+</html>
