@@ -1,13 +1,12 @@
-
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>FIFA World Cup 2026™ Boston Live</title>
+<title>Boston 2026 Live Dashboard (TEST MODE)</title>
 
-<!-- TYPOGRAPHIE OFFICIELLE STYLE BOSTONFWC26 -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 
 <style>
@@ -18,7 +17,6 @@
   --line:rgba(255,255,255,0.06);
 
   --cyan:#48d8ff;
-  --blue:#2d6cff;
   --green:#9cff57;
   --gold:#ffd166;
   --soft:#9fb5d1;
@@ -40,18 +38,14 @@ body{
   radial-gradient(circle at bottom right,#123459 0%,#071321 50%);
 }
 
-/* ================= HEADER BANNER ================= */
+/* ================= HEADER ================= */
 
 .hero-banner{
   position:relative;
   height:220px;
 
   background-image:
-  linear-gradient(
-    to bottom,
-    rgba(0,0,0,.35),
-    rgba(7,19,33,.92)
-  ),
+  linear-gradient(to bottom, rgba(0,0,0,.35), rgba(7,19,33,.92)),
   url('https://media.licdn.com/dms/image/v2/D4E3DAQEVVoMcHtpilw/image-scale_191_1128/image-scale_191_1128/0/1684438652120/fwc26boston_cover?e=2147483647&v=beta&t=oARG6pnYBThQNVLsb0N_90fO8tTj5A6b7Yrm7JeIJt4');
 
   background-size:cover;
@@ -68,21 +62,18 @@ body{
   padding:32px 40px;
 }
 
-/* LOGO OFFICIEL */
+/* LOGO */
 .boston-logo{
   width:78px;
   height:auto;
-  object-fit:contain;
   filter: drop-shadow(0 0 18px rgba(72,216,255,.25));
 }
 
-/* TEXTES HEADER */
-
+/* TEXT */
 .title{
   font-size:34px;
   font-weight:900;
   letter-spacing:-1px;
-  text-shadow:0 4px 20px rgba(0,0,0,.4);
 }
 
 .subtitle{
@@ -95,7 +86,6 @@ body{
 }
 
 /* LIVE BADGE */
-
 .live{
   display:flex;
   align-items:center;
@@ -124,7 +114,7 @@ body{
   50%{opacity:.4; transform:scale(1.5);}
 }
 
-/* ================= MAIN LAYOUT ================= */
+/* ================= LAYOUT ================= */
 
 .container{
   display:grid;
@@ -135,15 +125,12 @@ body{
   height:calc(100vh - 220px);
 }
 
-/* PANELS */
-
 .panel{
   background:linear-gradient(180deg,rgba(16,37,64,.95),rgba(10,22,38,.95));
   border-radius:28px;
   padding:24px;
 
   border:1px solid var(--line);
-
   overflow:auto;
 }
 
@@ -153,17 +140,13 @@ body{
   color:var(--cyan);
   font-size:20px;
   font-weight:800;
-  letter-spacing:.5px;
 }
 
-/* MATCHS */
-
+/* MATCHES */
 .match{
   padding:18px;
   margin-bottom:14px;
-
   border-radius:18px;
-
   background:rgba(255,255,255,.03);
   border:1px solid rgba(255,255,255,.05);
 }
@@ -178,11 +161,6 @@ body{
   color:var(--gold);
   font-size:12px;
   font-weight:700;
-}
-
-.time{
-  color:var(--soft);
-  font-size:12px;
 }
 
 .teams{
@@ -202,8 +180,7 @@ body{
   color:var(--live);
 }
 
-/* GROUPS */
-
+/* STANDINGS */
 .group{
   margin-bottom:26px;
 }
@@ -219,7 +196,6 @@ body{
   grid-template-columns:40px 1fr 60px;
   padding:10px 12px;
   margin-bottom:6px;
-
   border-radius:12px;
   background:rgba(255,255,255,.03);
 }
@@ -231,7 +207,6 @@ body{
 }
 
 /* FOOTER */
-
 footer{
   position:absolute;
   bottom:8px;
@@ -242,32 +217,24 @@ footer{
 }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
-
+<!-- HEADER -->
 <header class="hero-banner">
 
   <div class="hero-overlay">
 
-    <!-- LOGO -->
-    <img
-      class="boston-logo"
-      src="https://bostonfwc26.com/wp-content/uploads/2024/06/fifa-graphic-on-white.png"
-      alt="Boston 2026 Logo"
-    />
+    <img class="boston-logo"
+         src="https://toppng.com/uploads/preview/fifa-world-cup-26-boston-logo-11717900651vdfiulgozq.webp"
+         alt="Boston 2026"/>
 
-    
-    <!-- TEXTE -->
     <div>
       <div class="title">FIFA WORLD CUP 2026™</div>
-      <div class="subtitle">WE ARE BOSTON • LIVE MATCH CENTER</div>
+      <div class="subtitle">WE ARE BOSTON • LIVE TEST MODE</div>
     </div>
 
-    <!-- LIVE -->
     <div class="live">
       <div class="dot"></div>
       LIVE
@@ -277,8 +244,7 @@ footer{
 
 </header>
 
-<!-- ================= CONTENT ================= -->
-
+<!-- CONTENT -->
 <div class="container">
 
   <div class="panel">
@@ -294,103 +260,134 @@ footer{
 </div>
 
 <footer>
-Boston FIFA World Cup 2026™ Live Dashboard
+TEST MODE • Simulated live data (no API required)
 </footer>
-
-<!-- ================= SCRIPT ================= -->
 
 <script>
 
-const API_BASE = "https://wc2026api.com/api";
-const API_KEY = "";
+/* ================= FAKE LIVE DATA ================= */
 
-/* MATCHES */
-async function loadMatches(){
+const fakeMatches = [
+  { home_team:"Arsenal", away_team:"Man City", home_score:1, away_score:0, status:"LIVE 42'" },
+  { home_team:"Real Madrid", away_team:"Barcelona", home_score:2, away_score:2, status:"LIVE 67'" },
+  { home_team:"Bayern", away_team:"Dortmund", home_score:3, away_score:1, status:"LIVE 55'" },
+  { home_team:"PSG", away_team:"Marseille", home_score:0, away_score:1, status:"LIVE 33'" }
+];
 
-  try{
+const fakeStandings = [
+  {
+    name:"A",
+    teams:[
+      {name:"France",points:6},
+      {name:"Brazil",points:4},
+      {name:"Mexico",points:1},
+      {name:"Canada",points:0}
+    ]
+  },
+  {
+    name:"B",
+    teams:[
+      {name:"England",points:7},
+      {name:"USA",points:5},
+      {name:"Argentina",points:3},
+      {name:"Japan",points:1}
+    ]
+  }
+];
 
-    const res = await fetch(`${API_BASE}/matches/today?key=${API_KEY}`);
-    const data = await res.json();
+/* ================= RENDER MATCHES ================= */
 
-    const el = document.getElementById("matches");
-    el.innerHTML = "";
+function loadMatches(){
 
-    data.matches.forEach(m=>{
+  const el = document.getElementById("matches");
+  el.innerHTML = "";
 
-      el.innerHTML += `
+  fakeMatches.forEach(m=>{
+
+    el.innerHTML += `
       <div class="match">
 
         <div class="match-top">
           <div class="status">${m.status}</div>
-          <div class="time">${m.time || ""}</div>
         </div>
 
         <div class="teams">
           <div class="team">${m.home_team}</div>
 
           <div class="score">
-            ${m.home_score ?? 0} - ${m.away_score ?? 0}
+            ${m.home_score} - ${m.away_score}
           </div>
 
           <div class="team">${m.away_team}</div>
         </div>
 
       </div>
-      `;
+    `;
 
-    });
-
-  }catch(e){
-    document.getElementById("matches").innerHTML = "Erreur chargement matchs";
-  }
+  });
 
 }
 
-/* STANDINGS */
-async function loadStandings(){
+/* ================= RENDER STANDINGS ================= */
 
-  try{
+function loadStandings(){
 
-    const res = await fetch(`${API_BASE}/standings?key=${API_KEY}`);
-    const data = await res.json();
+  const el = document.getElementById("standings");
+  el.innerHTML = "";
 
-    const el = document.getElementById("standings");
-    el.innerHTML = "";
+  fakeStandings.forEach(g=>{
 
-    data.groups.forEach(g=>{
+    let html = `
+      <div class="group">
+      <div class="group-title">GROUP ${g.name}</div>
+    `;
 
-      let html = `<div class="group">
-        <div class="group-title">GROUP ${g.name}</div>`;
+    g.teams.forEach((t,i)=>{
 
-      g.teams.forEach((t,i)=>{
-
-        html += `
+      html += `
         <div class="row">
           <div>${i+1}</div>
           <div>${t.name}</div>
           <div class="points">${t.points}</div>
-        </div>`;
-      });
-
-      html += `</div>`;
-      el.innerHTML += html;
+        </div>
+      `;
 
     });
 
-  }catch(e){
-    document.getElementById("standings").innerHTML = "Erreur chargement standings";
-  }
+    html += `</div>`;
+    el.innerHTML += html;
+
+  });
 
 }
 
-/* REFRESH */
-async function refresh(){
-  await loadMatches();
-  await loadStandings();
+/* ================= LIVE SIMULATION ================= */
+
+function updateScores(){
+
+  fakeMatches.forEach(m=>{
+
+    if(Math.random() > 0.7){
+      m.home_score += Math.random() > 0.5 ? 1 : 0;
+      m.away_score += Math.random() > 0.5 ? 1 : 0;
+    }
+
+  });
+
+}
+
+/* ================= INIT ================= */
+
+function refresh(){
+
+  updateScores();
+  loadMatches();
+  loadStandings();
+
 }
 
 refresh();
-setInterval(refresh,10000);
+setInterval(refresh,5000);
 
 </script>
 
