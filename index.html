@@ -47,99 +47,31 @@ body{
 
 
 /* HERO BANNER */
-
-.hero-banner{
-
-  position:relative;
-
-  height:220px;
-
-  background-image:
-  linear-gradient(
-    to bottom,
-    rgba(0,0,0,.35),
-    rgba(7,19,33,.92)
-  ),
-  url('https://media.licdn.com/dms/image/v2/D4E3DAQEVVoMcHtpilw/image-scale_191_1128/image-scale_191_1128/0/1684438652120/fwc26boston_cover?e=2147483647&v=beta&t=oARG6pnYBThQNVLsb0N_90fO8tTj5A6b7Yrm7JeIJt4');
-
-  background-size:cover;
-  background-position:center;
-
-  border-bottom:1px solid rgba(255,255,255,.08);
-
-  overflow:hidden;
-
-}
-
-.hero-overlay{
-
-  width:100%;
-  height:100%;
-
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-
-  padding:32px 36px;
-
-  backdrop-filter: blur(2px);
-
-}
-
-.branding{
-
-  display:flex;
-  align-items:center;
-  gap:18px;
-
-}
-
-.brand-icon{
-
-  width:58px;
-  height:58px;
-
-  border-radius:50%;
-
-  background:
-  linear-gradient(
-    135deg,
-    var(--cyan),
-    var(--green),
-    var(--blue)
-  );
-
-  box-shadow:
-  0 0 40px rgba(72,216,255,.55);
+  filter:
+  drop-shadow(0 0 18px rgba(72,216,255,.25));
 
 }
 
 .title{
+
   font-size:34px;
   font-weight:900;
-  letter-spacing:-1px;
+  letter-spacing:1px;
+
+  text-shadow:
+  0 4px 20px rgba(0,0,0,.4);
+
 }
 
 .subtitle{
+
+  color:#d6e7ff;
+
   font-size:13px;
-  font-weight:500;
-  letter-spacing:1.2px;
-  text-transform:uppercase;
-}
+  margin-top:6px;
 
-.team{
-  font-weight:700;
-  letter-spacing:-0.3px;
-}
-
-.score{
-  font-weight:900;
-  letter-spacing:-2px;
-}
-
-.group-name{
-  font-weight:800;
   letter-spacing:1px;
+
 }
 
 .live{
@@ -176,7 +108,6 @@ body{
   animation:pulse 1s infinite;
 
 }
-
 
 /* MAIN */
 
@@ -425,7 +356,7 @@ footer{
 
     <div class="branding">
 
-      <div class="brand-icon"></div>
+      <img class="boston-logo" src="https://toppng.com/uploads/preview/fifa-world-cup-26-boston-logo-11717900651vdfiulgozq.webp" alt="FIFA World Cup 26 Boston Logo"/>
 
       <div>
 
