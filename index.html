@@ -5,7 +5,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>Boston 2026 Live Dashboard (TEST MODE)</title>
+<title>Live Multi-Sport Dashboard</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 
@@ -23,9 +23,7 @@
   --live:#6eff7e;
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box;}
 
 body{
   margin:0;
@@ -38,115 +36,78 @@ body{
   radial-gradient(circle at bottom right,#123459 0%,#071321 50%);
 }
 
-/* ================= HEADER ================= */
-
-.hero-banner{
-  position:relative;
-  height:220px;
-
-  background-image:
-  linear-gradient(to bottom, rgba(0,0,0,.35), rgba(7,19,33,.92)),
-  url('https://media.licdn.com/dms/image/v2/D4E3DAQEVVoMcHtpilw/image-scale_191_1128/image-scale_191_1128/0/1684438652120/fwc26boston_cover?e=2147483647&v=beta&t=oARG6pnYBThQNVLsb0N_90fO8tTj5A6b7Yrm7JeIJt4');
-
-  background-size:cover;
-  background-position:center;
-
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.hero-overlay{
-  height:100%;
+/* HEADER */
+header{
+  height:120px;
   display:flex;
+  align-items:center;
   justify-content:space-between;
-  align-items:flex-start;
-  padding:32px 40px;
+  padding:0 40px;
+
+  background:rgba(0,0,0,.2);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid var(--line);
 }
 
-/* LOGO */
-.boston-logo{
-  width:78px;
-  height:auto;
-  filter: drop-shadow(0 0 18px rgba(72,216,255,.25));
-}
-
-/* TEXT */
 .title{
-  font-size:34px;
+  font-size:28px;
   font-weight:900;
-  letter-spacing:-1px;
 }
 
 .subtitle{
-  font-size:13px;
-  font-weight:500;
-  letter-spacing:1.2px;
+  font-size:12px;
+  color:#cfe6ff;
   text-transform:uppercase;
-  color:#d6e7ff;
-  margin-top:6px;
+  letter-spacing:1px;
 }
 
-/* LIVE BADGE */
 .live{
   display:flex;
   align-items:center;
   gap:10px;
-
   color:var(--live);
   font-weight:800;
-
-  background:rgba(0,0,0,.25);
-  padding:10px 16px;
-  border-radius:999px;
-
-  border:1px solid rgba(255,255,255,.08);
-  backdrop-filter: blur(8px);
 }
 
 .dot{
-  width:11px;
-  height:11px;
+  width:10px;
+  height:10px;
   border-radius:50%;
   background:var(--live);
   animation:pulse 1s infinite;
 }
 
 @keyframes pulse{
-  50%{opacity:.4; transform:scale(1.5);}
+  50%{opacity:.4;transform:scale(1.4);}
 }
 
-/* ================= LAYOUT ================= */
-
+/* LAYOUT */
 .container{
   display:grid;
   grid-template-columns:1.4fr 1fr;
-  gap:24px;
-
-  padding:24px;
-  height:calc(100vh - 220px);
+  gap:20px;
+  padding:20px;
+  height:calc(100vh - 120px);
 }
 
 .panel{
   background:linear-gradient(180deg,rgba(16,37,64,.95),rgba(10,22,38,.95));
-  border-radius:28px;
-  padding:24px;
-
-  border:1px solid var(--line);
+  border-radius:24px;
+  padding:20px;
   overflow:auto;
+  border:1px solid var(--line);
 }
 
-.panel h2{
-  margin-top:0;
-  margin-bottom:20px;
+h2{
+  margin:0 0 15px 0;
   color:var(--cyan);
-  font-size:20px;
-  font-weight:800;
 }
 
-/* MATCHES */
+/* MATCH */
 .match{
-  padding:18px;
-  margin-bottom:14px;
-  border-radius:18px;
+  padding:16px;
+  margin-bottom:12px;
+  border-radius:14px;
   background:rgba(255,255,255,.03);
   border:1px solid rgba(255,255,255,.05);
 }
@@ -154,13 +115,9 @@ body{
 .match-top{
   display:flex;
   justify-content:space-between;
-  margin-bottom:14px;
-}
-
-.status{
-  color:var(--gold);
+  margin-bottom:10px;
   font-size:12px;
-  font-weight:700;
+  color:var(--gold);
 }
 
 .teams{
@@ -170,34 +127,39 @@ body{
 }
 
 .team{
-  font-size:20px;
   font-weight:700;
 }
 
 .score{
-  font-size:36px;
+  font-size:28px;
   font-weight:900;
   color:var(--live);
 }
 
+/* SPORT TAG */
+.sport{
+  color:#9fb5d1;
+  font-size:11px;
+}
+
 /* STANDINGS */
 .group{
-  margin-bottom:26px;
+  margin-bottom:20px;
 }
 
 .group-title{
   color:var(--gold);
   font-weight:800;
-  margin-bottom:12px;
+  margin-bottom:10px;
 }
 
 .row{
   display:grid;
-  grid-template-columns:40px 1fr 60px;
-  padding:10px 12px;
-  margin-bottom:6px;
-  border-radius:12px;
+  grid-template-columns:40px 1fr 50px;
+  padding:8px;
   background:rgba(255,255,255,.03);
+  margin-bottom:6px;
+  border-radius:10px;
 }
 
 .points{
@@ -206,10 +168,9 @@ body{
   font-weight:800;
 }
 
-/* FOOTER */
 footer{
   position:absolute;
-  bottom:8px;
+  bottom:6px;
   width:100%;
   text-align:center;
   font-size:11px;
@@ -221,30 +182,20 @@ footer{
 
 <body>
 
-<!-- HEADER -->
-<header class="hero-banner">
+<header>
 
-  <div class="hero-overlay">
+  <div>
+    <div class="title">LIVE MULTI-SPORT DASHBOARD</div>
+    <div class="subtitle">Football • Basketball • Tennis • Simulation Mode</div>
+  </div>
 
-    <img class="boston-logo"
-         src="https://toppng.com/uploads/preview/fifa-world-cup-26-boston-logo-11717900651vdfiulgozq.webp"
-         alt="Boston 2026"/>
-
-    <div>
-      <div class="title">FIFA WORLD CUP 2026™</div>
-      <div class="subtitle">WE ARE BOSTON • LIVE TEST MODE</div>
-    </div>
-
-    <div class="live">
-      <div class="dot"></div>
-      LIVE
-    </div>
-
+  <div class="live">
+    <div class="dot"></div>
+    LIVE
   </div>
 
 </header>
 
-<!-- CONTENT -->
 <div class="container">
 
   <div class="panel">
@@ -253,72 +204,73 @@ footer{
   </div>
 
   <div class="panel">
-    <h2>GROUP STANDINGS</h2>
+    <h2>STANDINGS</h2>
     <div id="standings"></div>
   </div>
 
 </div>
 
 <footer>
-TEST MODE • Simulated live data (no API required)
+Multi-sport live dashboard (ready for API integration)
 </footer>
 
 <script>
 
-/* ================= FAKE LIVE DATA ================= */
+/* ================= FAKE MULTI-SPORT LIVE ================= */
 
-const fakeMatches = [
-  { home_team:"Arsenal", away_team:"Man City", home_score:1, away_score:0, status:"LIVE 42'" },
-  { home_team:"Real Madrid", away_team:"Barcelona", home_score:2, away_score:2, status:"LIVE 67'" },
-  { home_team:"Bayern", away_team:"Dortmund", home_score:3, away_score:1, status:"LIVE 55'" },
-  { home_team:"PSG", away_team:"Marseille", home_score:0, away_score:1, status:"LIVE 33'" }
+let matches = [
+  {sport:"Football", home:"Arsenal", away:"Man City", hs:1, as:0, status:"LIVE"},
+  {sport:"Football", home:"PSG", away:"Marseille", hs:0, as:1, status:"LIVE"},
+  {sport:"Basketball", home:"Lakers", away:"Celtics", hs:98, as:102, status:"Q4"},
+  {sport:"Tennis", home:"Alcaraz", away:"Djokovic", hs:2, as:1, status:"SET 4"}
 ];
 
-const fakeStandings = [
+let standings = [
   {
-    name:"A",
+    name:"Group A",
     teams:[
-      {name:"France",points:6},
-      {name:"Brazil",points:4},
-      {name:"Mexico",points:1},
-      {name:"Canada",points:0}
+      {n:"France",p:6},
+      {n:"Brazil",p:4},
+      {n:"Mexico",p:1},
+      {n:"Canada",p:0}
     ]
   },
   {
-    name:"B",
+    name:"Group B",
     teams:[
-      {name:"England",points:7},
-      {name:"USA",points:5},
-      {name:"Argentina",points:3},
-      {name:"Japan",points:1}
+      {n:"England",p:7},
+      {n:"USA",p:5},
+      {n:"Argentina",p:3},
+      {n:"Japan",p:1}
     ]
   }
 ];
 
 /* ================= RENDER MATCHES ================= */
 
-function loadMatches(){
+function renderMatches(){
 
   const el = document.getElementById("matches");
   el.innerHTML = "";
 
-  fakeMatches.forEach(m=>{
+  matches.forEach(m=>{
 
     el.innerHTML += `
       <div class="match">
 
         <div class="match-top">
-          <div class="status">${m.status}</div>
+          <div class="sport">${m.sport}</div>
+          <div>${m.status}</div>
         </div>
 
         <div class="teams">
-          <div class="team">${m.home_team}</div>
+          <div class="team">${m.home}</div>
 
           <div class="score">
-            ${m.home_score} - ${m.away_score}
+            ${m.hs} - ${m.as}
           </div>
 
-          <div class="team">${m.away_team}</div>
+          <div class="team">${m.away}</div>
         </div>
 
       </div>
@@ -330,25 +282,23 @@ function loadMatches(){
 
 /* ================= RENDER STANDINGS ================= */
 
-function loadStandings(){
+function renderStandings(){
 
   const el = document.getElementById("standings");
   el.innerHTML = "";
 
-  fakeStandings.forEach(g=>{
+  standings.forEach(g=>{
 
-    let html = `
-      <div class="group">
-      <div class="group-title">GROUP ${g.name}</div>
-    `;
+    let html = `<div class="group">
+      <div class="group-title">${g.name}</div>`;
 
     g.teams.forEach((t,i)=>{
 
       html += `
         <div class="row">
           <div>${i+1}</div>
-          <div>${t.name}</div>
-          <div class="points">${t.points}</div>
+          <div>${t.n}</div>
+          <div class="points">${t.p}</div>
         </div>
       `;
 
@@ -363,13 +313,13 @@ function loadStandings(){
 
 /* ================= LIVE SIMULATION ================= */
 
-function updateScores(){
+function updateLive(){
 
-  fakeMatches.forEach(m=>{
+  matches.forEach(m=>{
 
     if(Math.random() > 0.7){
-      m.home_score += Math.random() > 0.5 ? 1 : 0;
-      m.away_score += Math.random() > 0.5 ? 1 : 0;
+      m.hs += Math.random() > 0.5 ? 1 : 0;
+      m.as += Math.random() > 0.5 ? 1 : 0;
     }
 
   });
@@ -380,14 +330,14 @@ function updateScores(){
 
 function refresh(){
 
-  updateScores();
-  loadMatches();
-  loadStandings();
+  updateLive();
+  renderMatches();
+  renderStandings();
 
 }
 
 refresh();
-setInterval(refresh,5000);
+setInterval(refresh,4000);
 
 </script>
 
