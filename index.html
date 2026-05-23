@@ -45,57 +45,65 @@ body{
 
 }
 
-/* HERO BANNER */
-  letter-spacing:1px;
+//* HERO BANNER */
 
-  text-shadow:
-  0 4px 20px rgba(0,0,0,.4);
+.hero-banner{
+
+  position:relative;
+
+  height:220px;
+
+  background-image:
+  linear-gradient(
+    to bottom,
+    rgba(0,0,0,.35),
+    rgba(7,19,33,.92)
+  ),
+  url('https://media.licdn.com/dms/image/v2/D4E3DAQEVVoMcHtpilw/image-scale_191_1128/image-scale_191_1128/0/1684438652120/fwc26boston_cover?e=2147483647&v=beta&t=oARG6pnYBThQNVLsb0N_90fO8tTj5A6b7Yrm7JeIJt4');
+
+  background-size:cover;
+  background-position:center;
+
+  border-bottom:1px solid rgba(255,255,255,.08);
+
+  overflow:hidden;
 
 }
 
-.subtitle{
+.hero-overlay{
 
-  color:#d6e7ff;
+  width:100%;
+  height:100%;
 
-  font-size:13px;
-  margin-top:6px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
 
-  letter-spacing:1px;
+  padding:32px 36px;
+
+  backdrop-filter: blur(2px);
 
 }
 
-.live{
+.branding{
 
   display:flex;
   align-items:center;
-  gap:10px;
-
-  color:#7CFF8A;
-
-  font-weight:800;
-
-  background:rgba(0,0,0,.25);
-
-  padding:10px 16px;
-
-  border-radius:999px;
-
-  border:1px solid rgba(255,255,255,.08);
-
-  backdrop-filter: blur(8px);
+  gap:18px;
 
 }
 
-.dot{
+/* OFFICIAL BOSTON LOGO */
 
-  width:11px;
-  height:11px;
+.boston-logo{
 
-  border-radius:50%;
+  width:72px;
+  height:72px;
 
-  background:#7CFF8A;
+  object-fit:contain;
 
-  animation:pulse 1s infinite;
+  filter:
+  drop-shadow(0 0 18px rgba(72,216,255,.25));
 
 }
 
