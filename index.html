@@ -1,19 +1,19 @@
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
-
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>Boston FIFA World Cup 2026™ Live</title>
+<title>FIFA World Cup 2026™ Boston Live</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<!-- TYPOGRAPHIE OFFICIELLE STYLE BOSTONFWC26 -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
   --bg:#071321;
-  --bg2:#0d2037;
   --card:#102540;
   --line:rgba(255,255,255,0.06);
 
@@ -21,9 +21,7 @@
   --blue:#2d6cff;
   --green:#9cff57;
   --gold:#ffd166;
-  --white:#ffffff;
   --soft:#9fb5d1;
-
   --live:#6eff7e;
 }
 
@@ -32,25 +30,20 @@
 }
 
 body{
-
   margin:0;
-  overflow:hidden;
-
-  font-family:'Inter',sans-serif;
+  font-family:'Inter', system-ui, sans-serif;
   color:white;
+  overflow:hidden;
 
   background:
   radial-gradient(circle at top left,#17385f 0%,#071321 45%),
   radial-gradient(circle at bottom right,#123459 0%,#071321 50%);
-
 }
 
-//* HERO BANNER */
+/* ================= HEADER BANNER ================= */
 
 .hero-banner{
-
   position:relative;
-
   height:220px;
 
   background-image:
@@ -65,281 +58,187 @@ body{
   background-position:center;
 
   border-bottom:1px solid rgba(255,255,255,.08);
-
-  overflow:hidden;
-
 }
 
 .hero-overlay{
-
-  width:100%;
   height:100%;
-
   display:flex;
-  align-items:flex-start;
   justify-content:space-between;
-
-  padding:32px 36px;
-
-  backdrop-filter: blur(2px);
-
+  align-items:flex-start;
+  padding:32px 40px;
 }
 
-.branding{
+/* LOGO OFFICIEL */
+.boston-logo{
+  width:78px;
+  height:auto;
+  object-fit:contain;
+  filter: drop-shadow(0 0 18px rgba(72,216,255,.25));
+}
 
+/* TEXTES HEADER */
+
+.title{
+  font-size:34px;
+  font-weight:900;
+  letter-spacing:-1px;
+  text-shadow:0 4px 20px rgba(0,0,0,.4);
+}
+
+.subtitle{
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  color:#d6e7ff;
+  margin-top:6px;
+}
+
+/* LIVE BADGE */
+
+.live{
   display:flex;
   align-items:center;
-  gap:18px;
+  gap:10px;
 
+  color:var(--live);
+  font-weight:800;
+
+  background:rgba(0,0,0,.25);
+  padding:10px 16px;
+  border-radius:999px;
+
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter: blur(8px);
 }
 
-/* OFFICIAL BOSTON LOGO */
-
-.boston-logo{
-
-  width:72px;
-  height:72px;
-
-  object-fit:contain;
-
-  filter:
-  drop-shadow(0 0 18px rgba(72,216,255,.25));
-
+.dot{
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  background:var(--live);
+  animation:pulse 1s infinite;
 }
 
-/* MAIN */
+@keyframes pulse{
+  50%{opacity:.4; transform:scale(1.5);}
+}
+
+/* ================= MAIN LAYOUT ================= */
 
 .container{
-
   display:grid;
   grid-template-columns:1.4fr 1fr;
   gap:24px;
 
   padding:24px;
-
   height:calc(100vh - 220px);
-
 }
 
 /* PANELS */
 
 .panel{
-
-  background:
-  linear-gradient(
-  180deg,
-  rgba(16,37,64,.95),
-  rgba(10,22,38,.95)
-  );
-
+  background:linear-gradient(180deg,rgba(16,37,64,.95),rgba(10,22,38,.95));
   border-radius:28px;
-
   padding:24px;
 
   border:1px solid var(--line);
 
-  box-shadow:
-  0 15px 40px rgba(0,0,0,.4),
-  inset 0 1px 0 rgba(255,255,255,.03);
-
   overflow:auto;
-
 }
-
-/* TITLES */
 
 .panel h2{
-
   margin-top:0;
-  margin-bottom:24px;
-
+  margin-bottom:20px;
   color:var(--cyan);
-
   font-size:20px;
+  font-weight:800;
   letter-spacing:.5px;
-
 }
 
-/* MATCH CARD */
+/* MATCHS */
 
 .match{
+  padding:18px;
+  margin-bottom:14px;
 
-  position:relative;
+  border-radius:18px;
 
-  padding:20px;
-
-  margin-bottom:16px;
-
-  border-radius:22px;
-
-  background:
-  linear-gradient(
-  180deg,
-  rgba(255,255,255,.04),
-  rgba(255,255,255,.02)
-  );
-
+  background:rgba(255,255,255,.03);
   border:1px solid rgba(255,255,255,.05);
-
-  overflow:hidden;
-
 }
-
-.match::before{
-
-  content:"";
-
-  position:absolute;
-
-  top:0;
-  left:0;
-  bottom:0;
-
-  width:5px;
-
-  background:
-  linear-gradient(
-  var(--cyan),
-  var(--green)
-  );
-
-}
-
-/* MATCH TOP */
 
 .match-top{
-
   display:flex;
   justify-content:space-between;
-
-  margin-bottom:16px;
-
+  margin-bottom:14px;
 }
 
 .status{
-
   color:var(--gold);
   font-size:12px;
   font-weight:700;
-  letter-spacing:1px;
-
 }
 
 .time{
-
   color:var(--soft);
   font-size:12px;
-
 }
 
-/* TEAMS */
-
 .teams{
-
   display:flex;
-  align-items:center;
   justify-content:space-between;
-
+  align-items:center;
 }
 
 .team{
-
-  width:35%;
-
-  font-size:22px;
+  font-size:20px;
   font-weight:700;
-
-}
-
-.team:last-child{
-
-  text-align:right;
-
 }
 
 .score{
-
-  width:30%;
-
-  text-align:center;
-
-  font-size:40px;
+  font-size:36px;
   font-weight:900;
-
   color:var(--live);
-
 }
 
 /* GROUPS */
 
 .group{
-
-  margin-bottom:32px;
-
+  margin-bottom:26px;
 }
 
-.group-name{
-
-  margin-bottom:14px;
-
+.group-title{
   color:var(--gold);
-
-  font-size:18px;
   font-weight:800;
-
-  letter-spacing:1px;
-
+  margin-bottom:12px;
 }
 
-.team-row{
-
+.row{
   display:grid;
-  grid-template-columns:50px 1fr 80px;
+  grid-template-columns:40px 1fr 60px;
+  padding:10px 12px;
+  margin-bottom:6px;
 
-  align-items:center;
-
-  padding:12px 14px;
-
-  margin-bottom:8px;
-
-  border-radius:14px;
-
+  border-radius:12px;
   background:rgba(255,255,255,.03);
-
-  border:1px solid rgba(255,255,255,.03);
-
-}
-
-.rank{
-
-  color:var(--soft);
-
 }
 
 .points{
-
   text-align:right;
-
   color:var(--cyan);
   font-weight:800;
-
 }
 
 /* FOOTER */
 
 footer{
-
   position:absolute;
-  bottom:10px;
+  bottom:8px;
   width:100%;
-
   text-align:center;
-
-  color:#7f97b5;
   font-size:11px;
-
-  letter-spacing:.5px;
-
+  color:#7f97b5;
 }
 
 </style>
@@ -348,67 +247,56 @@ footer{
 
 <body>
 
+<!-- ================= HEADER ================= -->
+
 <header class="hero-banner">
 
   <div class="hero-overlay">
 
-    <div class="branding">
-      <img class="boston-logo" src="https://github.com/olf2678/wc2026-dashboard/blob/main/logo.png" alt="FIFA World Cup 26 Boston Logo"/>
+    <!-- LOGO -->
+    <img
+      class="boston-logo"
+      src="https://toppng.com/uploads/preview/fifa-world-cup-26-boston-logo-11717900651vdfiulgozq.webp"
+      alt="Boston 2026 Logo"
+    />
 
-      <div>
-
-        <div class="title">
-          FIFA WORLD CUP 2026™
-        </div>
-
-        <div class="subtitle">
-          WE ARE BOSTON • LIVE MATCH CENTER
-        </div>
-
-      </div>
-
+    <!-- TEXTE -->
+    <div>
+      <div class="title">FIFA WORLD CUP 2026™</div>
+      <div class="subtitle">WE ARE BOSTON • LIVE MATCH CENTER</div>
     </div>
 
+    <!-- LIVE -->
     <div class="live">
-
       <div class="dot"></div>
-
       LIVE
-
     </div>
 
   </div>
 
 </header>
 
+<!-- ================= CONTENT ================= -->
 
 <div class="container">
 
-  <!-- LIVE MATCHES -->
-
   <div class="panel">
-
     <h2>LIVE MATCHES</h2>
-
     <div id="matches"></div>
-
   </div>
 
-  <!-- STANDINGS -->
-
   <div class="panel">
-
     <h2>GROUP STANDINGS</h2>
-
     <div id="standings"></div>
-
   </div>
 
 </div>
 
 <footer>
-Inspired by the official Boston FIFA World Cup 2026™ Host City branding
+Boston FIFA World Cup 2026™ Live Dashboard
 </footer>
+
+<!-- ================= SCRIPT ================= -->
 
 <script>
 
@@ -416,150 +304,91 @@ const API_BASE = "https://wc2026api.com/api";
 const API_KEY = "";
 
 /* MATCHES */
-
 async function loadMatches(){
 
   try{
 
-    const res = await fetch(
-      `${API_BASE}/matches/today?key=${API_KEY}`
-    );
-
+    const res = await fetch(`${API_BASE}/matches/today?key=${API_KEY}`);
     const data = await res.json();
 
     const el = document.getElementById("matches");
-
     el.innerHTML = "";
 
     data.matches.forEach(m=>{
 
       el.innerHTML += `
-
       <div class="match">
 
         <div class="match-top">
-
-          <div class="status">
-            ${m.status}
-          </div>
-
-          <div class="time">
-            ${m.time || ""}
-          </div>
-
+          <div class="status">${m.status}</div>
+          <div class="time">${m.time || ""}</div>
         </div>
 
         <div class="teams">
-
-          <div class="team">
-            ${m.home_team}
-          </div>
+          <div class="team">${m.home_team}</div>
 
           <div class="score">
-            ${m.home_score ?? 0}
-            -
-            ${m.away_score ?? 0}
+            ${m.home_score ?? 0} - ${m.away_score ?? 0}
           </div>
 
-          <div class="team">
-            ${m.away_team}
-          </div>
-
+          <div class="team">${m.away_team}</div>
         </div>
 
       </div>
-
       `;
 
     });
 
   }catch(e){
-
-    document.getElementById("matches").innerHTML =
-    "Unable to load live matches.";
-
+    document.getElementById("matches").innerHTML = "Erreur chargement matchs";
   }
 
 }
 
 /* STANDINGS */
-
 async function loadStandings(){
 
   try{
 
-    const res = await fetch(
-      `${API_BASE}/standings?key=${API_KEY}`
-    );
-
+    const res = await fetch(`${API_BASE}/standings?key=${API_KEY}`);
     const data = await res.json();
 
     const el = document.getElementById("standings");
-
     el.innerHTML = "";
 
     data.groups.forEach(g=>{
 
-      let html = `
+      let html = `<div class="group">
+        <div class="group-title">GROUP ${g.name}</div>`;
 
-      <div class="group">
-
-      <div class="group-name">
-        GROUP ${g.name}
-      </div>
-
-      `;
-
-      g.teams.forEach((t,index)=>{
+      g.teams.forEach((t,i)=>{
 
         html += `
-
-        <div class="team-row">
-
-          <div class="rank">
-            ${index+1}
-          </div>
-
-          <div>
-            ${t.name}
-          </div>
-
-          <div class="points">
-            ${t.points} PTS
-          </div>
-
-        </div>
-
-        `;
-
+        <div class="row">
+          <div>${i+1}</div>
+          <div>${t.name}</div>
+          <div class="points">${t.points}</div>
+        </div>`;
       });
 
       html += `</div>`;
-
       el.innerHTML += html;
 
     });
 
   }catch(e){
-
-    document.getElementById("standings").innerHTML =
-    "Unable to load standings.";
-
+    document.getElementById("standings").innerHTML = "Erreur chargement standings";
   }
 
 }
 
 /* REFRESH */
-
 async function refresh(){
-
   await loadMatches();
   await loadStandings();
-
 }
 
 refresh();
-
 setInterval(refresh,10000);
 
 </script>
